@@ -15,7 +15,7 @@ jobs:
       with:
         # Disabling shallow clone is recommended for improving relevancy of reporting
         fetch-depth: 0
-    - name: Install dependencies
+    - name: Install dependencies mate
       run: yarn
     - name: Lint for any errors
       run: yarn lint
