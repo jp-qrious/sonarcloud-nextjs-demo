@@ -1,10 +1,9 @@
 on:
-  push:
+  pull_request:
+    types: [opened, synchronize, reopened]
     branches-ignore:
       - main
-  pull_request:
-      types: [opened, synchronize, reopened]
-name: Vercel Static Code Analysis
+name: Sonarcloud Static Code Analysis
 jobs:
   sonarcloud:
     runs-on: ubuntu-latest
