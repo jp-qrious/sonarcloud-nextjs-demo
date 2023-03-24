@@ -1,8 +1,6 @@
 on:
   pull_request:
     types: [opened, synchronize, reopened]
-    branches-ignore:
-      - main
 name: Sonarcloud Static Code Analysis
 jobs:
   sonarcloud:
