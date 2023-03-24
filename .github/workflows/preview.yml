@@ -1,13 +1,13 @@
-on:
-  pull_request:
-    types: [opened, synchronize, reopened]
+on: [push]
 name: Vercel Preview Deployment
 env:
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
 jobs:
-  Deploy-Preview:
+  deploy:
+    name: Deploy Preview to Vercel
     runs-on: ubuntu-latest
+    if: contains(github.event.head_commit.message, 'CI')
     steps:
       - uses: actions/checkout@v2
       - name: Install Vercel CLI
