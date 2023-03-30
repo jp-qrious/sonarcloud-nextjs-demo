@@ -1,4 +1,10 @@
-on: workflow_dispatch
+on:
+  workflow_dispatch:
+    inputs:
+      context:
+        description: 'What does this deployment do?'
+        type: string
+        required: true
 name: Vercel Preview Deployment
 env:
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
@@ -9,6 +15,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Announce deployment context
+        run: "echo Context: ${{ inputs.context }}"
       - name: Install Vercel CLI
         run: npm install --global vercel@latest
       - name: Pull Vercel Environment Information
