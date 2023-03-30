@@ -7,7 +7,6 @@ jobs:
   deploy:
     name: Deploy Preview to Vercel
     runs-on: ubuntu-latest
-    if: contains(github.event.head_commit.message, 'CI')
     steps:
       - uses: actions/checkout@v2
       - name: Install Vercel CLI
