@@ -27,4 +27,6 @@ jobs:
       - name: Build Project Artifacts
         run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
       - name: Deploy Project Artifacts to Vercel
-        run: vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }}
+        run: vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }} > deployment-url.txt 2> deployment-error.txt
+      - name: Link deployment URL to custom domain
+        run: vercel alias $(cat deployment-url.txt | head -1) vercel.caparas.cloud --token=${{ secrets.VERCEL_TOKEN }}
